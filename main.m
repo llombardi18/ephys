@@ -1,33 +1,29 @@
 clearvars
 close all
-datafolder = 'D:\Ephys_WashU\Chrimson_Chronos\11.23.22\1stcell';
+datafolder = uigetdir
+%datafolder = 'D:\Ephys_WashU\Chrimson_Chronos\11.23.22\1stcell';
 addpath(datafolder);
 filenames_raw = ls(datafolder)
 for IDfile = 3:size(filenames_raw,1)
     filename = filenames_raw(IDfile,1);
     [d,si,h] = abfload([datafolder '\' filenames_raw(IDfile,:)],'doDisplayInfo',true);
-
     fs = 10000;
     t = [1:size(d,1)]/fs;
-
-    
+  
     if (filename == 'C')
         figure
         stackedplot(t*1000, d(:,1,:))
         xlabel('ms')
         title(filenames_raw(IDfile,:))
 
-%         figure
-%         plot(t*1000, d(:,1,20))
-%         xlabel('ms')
     elseif (filename == 'V')
 
         figure
         stackedplot(t*1000, d(:,1,:))
         xlabel('ms')
-        %ylabel('pA')
-        %ylim([-500, 100])
         title(filenames_raw(IDfile,:))
+    else
+        error('Filename not recognized')
     end
     
 
