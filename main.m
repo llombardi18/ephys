@@ -38,7 +38,7 @@ end
 
 
 
-%experiment = HEKA_Importer('1-VCok.dat');
+% experiment = HEKA_Importer('1-VCok.dat');
 % experiment = HEKA_Importer('1-VCok.dat');
 % 
 % raw = cell2mat(experiment.RecTable.dataRaw{1});
